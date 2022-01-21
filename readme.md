@@ -23,9 +23,10 @@ npm install solidoc2 -g
 **CLI Arguments**
 
 1. Path to truffle project (or similar) root.
-2. Path to generate documentation to.
-3. Do not recompile. Optional, default: false.
-4. Language. Optional, default: en.
+2. Path to abi files relative to the root from p.1
+3. Path to generate documentation to.
+4. Do not recompile. Optional, default: false.
+5. Language. Optional, default: en.
 
 
 **How to Use Solidoc?**
@@ -64,6 +65,7 @@ Alternatively, you can create `solidoc.json` configuration file in your project 
 {
   "pathToRoot": "./",
   "outputPath": "./docs",
+  "buildFolder": "build",
   "noCompilation": true,
   "compiler": "truffle compile",
   "language": "en"
