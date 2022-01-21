@@ -18,8 +18,9 @@ const logger = pino({
     Arguments:
     1. Path to truffle project root.
     2. Path to generate documentation to.
-    3. Do not recompile. Optional, default: false.
-    4. Language. Optional, default: en.
+    3. Path to abi files relative to the root from p.1, default: "path"
+    4. Do not recompile. Optional, default: false.
+    5. Language. Optional, default: en.
 *************************************************************************************************/
 function getConfig () {
   function readConfig () {
@@ -38,16 +39,17 @@ function getConfig () {
   const config = readConfig()
   const args = process.argv
 
-  if (args.length > 6) {
+  if (args.length > 7) {
     logger.error(`Invalid command ${process.argv.join(' ')}`)
     return
   }
 
-  if (args.length > 2) {
-    config.pathToRoot = args[2]
-    config.outputPath = args[3]
-    config.noCompilation = (args[4] || '').toLowerCase().startsWith('t')
-    config.language = args[5] || 'en'
+  if(args.length > 2) {
+    config.pathToRoot = args[2];
+    config.outputPath = args[3];
+    config.buildFolder = args[4] || "path";
+    config.noCompilation = (args[5] || "").toLowerCase().startsWith("t");
+    config.language = args[6] || "en";
   }
 
   config.pathToRoot = resolve(config.pathToRoot)
