@@ -15,28 +15,36 @@ This command-line utility creates markdown-based documentation for your Solidity
 
 
 ## Getting Started
+  
+**Requirements** 
+- Truffle installed  
+  
+```npm
+npm install truffle -g
+```
+  
+- Sovryn solidoc installed
 
 ```npm
-npm install solidoc2 -g
+npm install sovryn-solidoc@git+https://github.com/DistributedCollective/solidoc2#develop -g
 ```
-
-**CLI Arguments**
-
-1. Path to truffle project (or similar) root.
-2. Path to abi files relative to the root from p.1
-3. Path to generate documentation to.
-4. Do not recompile. Optional, default: false.
-5. Language. Optional, default: en.
-
 
 **How to Use Solidoc?**
 
 On your project root, run the following command.
 
 ```npm
-solidoc ./ ./docs true
+sovryn-solidoc ./ ./docs true
 ```
+  
+**CLI Arguments**
 
+1. Path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
+2. Path to abi files relative to the root from p.1
+3. Path to generate documentation to.
+4. Do not recompile. Optional, default: false.
+5. Language. Optional, default: en.
+  
 This will generate documentation to the `docs` directory.
 
 **Or edit package.json**
@@ -92,4 +100,4 @@ You can also override language literals by copying and editing `i18n` files on t
 
 ## Example Documentation
 
-[Neptune Mutual Protocol Documentation](https://github.com/neptune-mutual/protocol)
+[Sovryn Oracle Based AMM Contracts](https://github.com/DistributedCollective/oracle-based-amm/tree/feat/solidoc-docs-generator/docs)
