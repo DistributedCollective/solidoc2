@@ -27,8 +27,10 @@ const build = (node, contracts) => {
   }
 
   const baseContract = getBaseContract(contracts, superId)
-  if(baseContract) {
-    builder.push(`[${baseContract.contractName}.${node.name}](${baseContract.contractName}.md#${node.name.toLowerCase()})`)
+  if (baseContract) {
+    fname = node.name ? '.'.concat(node.name) : ' constructor'
+    fnamelink = (node.name ? node.name : 'constructor').toLowerCase()
+    builder.push(`[${baseContract.contractName}${fname}](${baseContract.contractName}.md#${fnamelink})`)
 
     return builder.join('')
   }

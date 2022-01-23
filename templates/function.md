@@ -1,5 +1,8 @@
-{{FunctionNameHeading}}
-
+  
+---    
+  
+> ### {{FunctionNameHeading}}
+  
 {{Super}}
 
 {{References}}

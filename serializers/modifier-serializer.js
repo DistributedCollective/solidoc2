@@ -31,15 +31,18 @@ const serialize = (contract, template, _contracts) => {
   for (const i in modifierNodes) {
     const node = modifierNodes[i]
 
+    const parameters = (node.parameters || {}).parameters
+    const args = argumentBuilder.build(node.documentation, parameters)
+    
     let modifierTemplate = templateHelper.ModifierTemplate
     const description = documentationHelper.getNotice(node.documentation)
 
-    modifierTemplate = modifierTemplate.replace('{{ModifierArgumentsHeading}}', `**${i18n.translate('Arguments')}**`)
-    modifierTemplate = modifierTemplate.replace('{{TableHeader}}', templateHelper.TableHeaderTemplate)
+    modifierTemplate = modifierTemplate.replace('{{ModifierArgumentsHeading}}', args ? `**${i18n.translate('Arguments')}**`:'')
+    modifierTemplate = modifierTemplate.replace('{{TableHeader}}', args ? templateHelper.TableHeaderTemplate : '')
     modifierTemplate = modifierTemplate.replace('{{ModifierNameHeading}}', `### ${node.name}`)
     modifierTemplate = modifierTemplate.replace('{{ModifierDescription}}', description)
     modifierTemplate = modifierTemplate.replace('{{ModifierCode}}', codeBuilder.build(node))
-    modifierTemplate = modifierTemplate.replace('{{ModifierArguments}}', argumentBuilder.build(node.documentation, node.parameters.parameters))
+    modifierTemplate = modifierTemplate.replace('{{ModifierArguments}}', args ? args : '')
 
     definitionList.push(modifierTemplate)
   }

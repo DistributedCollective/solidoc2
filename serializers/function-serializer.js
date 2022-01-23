@@ -62,7 +62,7 @@ const serialize = (contract, template, contracts) => {
       parameterList.push(`${dataType} ${argumentName}`)
     }
 
-    return `- [${x.name || 'constructor'}(${parameterList.join(', ')})](#${x.name.toLowerCase()})`
+    return `- [${x.name || 'constructor'}(${parameterList.join(', ')})](#${x.name ? x.name.toLowerCase() : 'constructor'})`
   }).toArray()
 
   template = template.replace('{{FunctionTitle}}', i18n.translate('Functions'))
@@ -80,15 +80,20 @@ const serialize = (contract, template, contracts) => {
 
     functionTemplate = functionTemplate.replace('{{FunctionName}}', node.name)
     functionTemplate = functionTemplate.replace('{{FQFunctionName}}', `${contract.contractName}.${node.name}`)
-    functionTemplate = functionTemplate.replace('{{FunctionNameHeading}}', `### ${node.name}`)
+    functionTemplate = functionTemplate.replace('{{FunctionNameHeading}}', `${node.name || 'constructor'}`)
     functionTemplate = functionTemplate.replace('{{Super}}', base)
     functionTemplate = functionTemplate.replace('{{References}}', references)
     functionTemplate = functionTemplate.replace('{{FunctionDescription}}', description)
     functionTemplate = functionTemplate.replace('{{FunctionCode}}', signature)
     functionTemplate = functionTemplate.replace('{{FunctionArguments}}', args)
+    if(node.name =='_active')
+      console.log('args', args)
 
-    functionTemplate = functionTemplate.replace('{{TableHeader}}', parameters ? templateHelper.TableHeaderTemplate : '')
-    functionTemplate = functionTemplate.replace('{{FunctionArgumentsHeading}}', parameters ? `**${i18n.translate('Arguments')}**` : '')
+    functionTemplate = functionTemplate.replace('{{TableHeader}}', args ? templateHelper.TableHeaderTemplate : '')
+    if(node.name =='_active')
+      console.log('parameters', parameters)
+
+    functionTemplate = functionTemplate.replace('{{FunctionArgumentsHeading}}', args ? `**${i18n.translate('Arguments')}**` : '')
 
     functionTemplate = functionTemplate.replace('{{FunctionBody}}', getCode(node, contract))
 
