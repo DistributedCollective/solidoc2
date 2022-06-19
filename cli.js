@@ -45,9 +45,9 @@ function getConfig () {
   }
 
   if(args.length > 2) {
-    config.pathToRoot = args[2];
-    config.outputPath = args[3];
-    config.buildFolder = args[4] || "path";
+    config.pathToRoot = args[2] || config ? config.pathToRoot : "/";
+    config.outputPath = args[3] || config ? config.outputPath : "/docs";
+    config.buildFolder = args[4] || config ? config.buildFolder : "/build";
     config.noCompilation = (args[5] || "").toLowerCase().startsWith("t");
     config.language = args[6] || "en";
   }
