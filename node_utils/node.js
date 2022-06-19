@@ -7,7 +7,7 @@ const findNodeById = (nodes, id) => {
     }
 
     if (node.nodes && node.nodes.length) {
-      return this.findNodeById(node.nodes, id)
+      return findNodeById(node.nodes, id)
     }
   }
 
@@ -25,7 +25,7 @@ const findOverriddenNodesByIds = (nodes, supers) => {
     }
 
     if (node.nodes && node.nodes.length) {
-      overriddenNodes = overriddenNodes.concat(this.findOverriddenNodesByIds(node.nodes, supers))
+      overriddenNodes = overriddenNodes.concat(findOverriddenNodesByIds(node.nodes, supers))
     }
   }
 
