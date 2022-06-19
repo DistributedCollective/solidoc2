@@ -7,11 +7,11 @@ const logger = pino({
   prettyPrint: true
 })
 
-const parse = (buildDirectory) => {
+const parse = (buildDirectory, ignoreFiles = [] ) => {
   logger.info('Parsing %s', buildDirectory)
   const contracts = []
 
-  const files = glob.sync(buildDirectory + '/**/*.json', {})
+  const files = glob.sync(buildDirectory + '/**/*.json', { ingore: ignoreFiles });
 
   for (let i = 0; i < files.length; i++) {
     const data = fs.readFileSync(files[i])

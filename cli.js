@@ -90,7 +90,7 @@ function begin () {
     fs.mkdirSync(config.outputPath)
   }
 
-  const contracts = parser.parse(buildDirectory)
+  const contracts = parser.parse(buildDirectory, config.ignoreFiles)
   generator.serialize(contracts, config.outputPath, generateReadMe)
 }
 
