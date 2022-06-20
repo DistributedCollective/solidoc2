@@ -66,7 +66,7 @@ if (!config.pathToRoot) {
   return
 }
 
-const buildDirectory = path.join(config.pathToRoot, 'build')
+const buildDirectory = path.join(config.pathToRoot, config.buildFolder ? config.buildFolder : 'build')
 
 if (!fs.existsSync(config.pathToRoot)) {
   logger.error('Invalid directory: %s.', config.pathToRoot)
@@ -90,7 +90,7 @@ function begin () {
     fs.mkdirSync(config.outputPath)
   }
 
-  const contracts = parser.parse(buildDirectory, config.ignoreFiles)
+  const contracts = parser.parse(buildDirectory, config.ignoreFiles ? config.ignoreFiles : [])
   generator.serialize(contracts, config.outputPath, generateReadMe)
 }
 
