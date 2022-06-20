@@ -31,6 +31,23 @@ npm install sovryn-solidoc@git+https://github.com/DistributedCollective/solidoc2
 
 **How to Use Solidoc?**
 
+Create solidoc.json in the root
+
+```js
+{
+  "pathToRoot": "solidity",
+  "outputPath": "docs",
+  "buildFolder": "build/contracts",
+  "noCompilation": true,
+  "compiler": "truffle compile",
+  "language": "en",
+  "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
+  "readme": "docs"
+}
+
+```  
+
+
 On your project root, run the following command.
 
 ```npm
