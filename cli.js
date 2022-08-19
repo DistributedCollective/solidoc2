@@ -45,10 +45,10 @@ function getConfig () {
   }
 
   if(args.length > 2) {
-    config.pathToRoot = args[2] || config ? config.pathToRoot : "/";
-    config.outputPath = args[3] || config ? config.outputPath : "/docs";
-    config.buildFolder = args[4] || config ? config.buildFolder : "/build";
-    config.noCompilation = (args[5] || "").toLowerCase().startsWith("t");
+    config.pathToRoot = args[2] || config ? config.pathToRoot : "./";
+    config.outputPath = args[3] || config ? config.outputPath : "./docs";
+    config.buildFolder = args[4] || config ? config.buildFolder : "./build";
+    config.noCompilation = (args[5] || config ? config.noCompilation : "false").toLowerCase().startsWith("t");
     config.language = args[6] || "en";
   }
 
@@ -74,7 +74,8 @@ if (!fs.existsSync(config.pathToRoot)) {
 }
 
 const generateReadMe = (contract, contents) => {
-  if(contract.contractName === config.rootContract) {
+  if (contract.contractName == config.rootContract) {
+    console.log(contract.contractName, 'is found!')
     readMe.set(contents, config)
   }
 }

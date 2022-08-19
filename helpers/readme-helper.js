@@ -25,6 +25,7 @@ const set = (replacable, config) => {
   const { readMe } = config
 
   if (!fs.existsSync(readMe)) {
+    console.log('WARNING: readMe', readMe, 'not exists!')
     return
   }
 
