@@ -31,7 +31,7 @@ npm install sovryn-solidoc@git+https://github.com/DistributedCollective/solidoc2
 
 **How to Use Solidoc2**
 
-Create solidoc.json in the root
+Create solidoc.json in the root:  
 
 ```js
 {
@@ -42,13 +42,29 @@ Create solidoc.json in the root
   "compiler": "truffle compile",
   "language": "en",
   "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
+  "contractsListBeginKeyword": "## Contracts",
   "readMe": "README.md"
 }
-
 ```  
 
+`pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle  
+`outputPath`: path to generate documentation to  
+`buildFolder`: path to abi files relative to the root from `pathToRoot`  
+`noCompilation`: do not recompile, optional, default: false  
+`compiler`: path to run truffle compiler  
+`language`: language, optional, default: en  
+`ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc.  
+`contractsListBeginKeyword`: text before the keyword will be removed from the contrtacts list for `readMe`
+`readMe`: add contracts docs refs to this README.md file  
+  >  Contracts links will be inserted between these lines (put it in the readMe file)  
+  >  [comment]: #solidoc (Start)  
+  >  [comment]: #solidoc (End) 
 
-E.g. on your project root, run the following command.
+and then call `solidoc2` instead of passing command line arguments
+
+You can still use CLI arguments too which have priority over and override config parameters  
+  
+On your project root, run the following command to generate documentation to the `docs` directory
 
 ```npm
 solidoc2 ./ ./docs true
@@ -60,18 +76,8 @@ solidoc2 ./ ./docs true
     2. Path to generate documentation to.
     3. Path to abi files relative to the root from p.1, default: root from p.1
     4. Do not recompile. Optional, default: false.
-    5. Language. Optional, default: en.
-
-`pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
-`outputPath`: path to generate documentation to
-`buildFolder`: path to abi files relative to the root from `pathToRoot`
-`noCompilation`: do not recompile, optional, default: false
-`compiler`: path to run truffle compiler
-`language`: language, optional, default: en
-`ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc. 
-`readMe`: add contracts docs refs to this README.md file
+    5. Language. Optional, default: en. 
   
-This will generate documentation to the `docs` directory.
 
 **Or edit package.json**
 
@@ -89,26 +95,7 @@ npm run docgen
 
 **Note**
 
-Do not use recompilation (third argument) if you are using this on a non truffle project.
-
-## Configuration File
-
-Alternatively, you can create `solidoc.json` configuration file in your project root.
-
-```json
-{
-  "pathToRoot": "solidity",
-  "outputPath": "docs",
-  "buildFolder": "build/contracts",
-  "noCompilation": true,
-  "compiler": "truffle compile",
-  "language": "en",
-  "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
-  "readMe": "README.md"
-}
-```
-
-and then call `solidoc2` instead of passing any command line argument.
+Do not use recompilation (forth argument) if you are using this on a non truffle project.
 
 
 ## Overrides

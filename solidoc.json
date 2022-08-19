@@ -4,7 +4,7 @@
   "noCompilation": true,
   "compiler": "truffle compile",
   "language": "en",
-  "rootContract": "Cover",
   "ignoreFiles": [],
+  "contractsListBeginKeyword": "## Contracts",
   "readMe": "../protocol/readme.md"
 }
