@@ -56,14 +56,20 @@ solidoc2 ./ ./docs true
   
 **CLI Arguments**
 
-1. `pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
-2. `outputPath`: path to generate documentation to
-3. `buildFolder`: path to abi files relative to the root from `pathToRoot`
-4. `noCompilation`: do not recompile, optional, default: false
-5. `compiler`: path to run truffle compiler
-6. `language`: language, optional, default: en
-7. `ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc. 
-8. `readMe`: add contracts docs refs to this README.md file
+    1. Path to truffle project root.
+    2. Path to generate documentation to.
+    3. Path to abi files relative to the root from p.1, default: root from p.1
+    4. Do not recompile. Optional, default: false.
+    5. Language. Optional, default: en.
+
+`pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
+`outputPath`: path to generate documentation to
+`buildFolder`: path to abi files relative to the root from `pathToRoot`
+`noCompilation`: do not recompile, optional, default: false
+`compiler`: path to run truffle compiler
+`language`: language, optional, default: en
+`ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc. 
+`readMe`: add contracts docs refs to this README.md file
   
 This will generate documentation to the `docs` directory.
 
