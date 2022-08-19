@@ -31,12 +31,19 @@
     "ubiq",
     "monax"
   ],
-  "author": "Neptune Mutual",
+  "author": "Sovryn",
+  "contributors": [
+    {
+      "name": "Tyrone Johnson",
+      "url": "https://github.com/tjcloa"
+    }
+  ],
   "license": "Apache-2.0",
-  "homepage": "https://github.com/neptune-mutual/solidoc",
+  "homepage": "https://github.com/DistributedCollective/solidoc2"
+",
   "repository": {
     "type": "git",
-    "url": "https://github.com/neptune-mutual/solidoc"
+    "url": "https://github.com/DistributedCollective/solidoc2"
   },
   "dependencies": {
     "fs-extra": "^7.0.0",
