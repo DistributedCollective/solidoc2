@@ -29,7 +29,7 @@ npm install truffle -g
 npm install sovryn-solidoc@git+https://github.com/DistributedCollective/solidoc2#develop -g
 ```
 
-**How to Use Solidoc?**
+**How to Use Solidoc2**
 
 Create solidoc.json in the root
 
@@ -42,25 +42,28 @@ Create solidoc.json in the root
   "compiler": "truffle compile",
   "language": "en",
   "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
-  "readme": "docs"
+  "readMe": "README.md"
 }
 
 ```  
 
 
-On your project root, run the following command.
+E.g. on your project root, run the following command.
 
 ```npm
-sovryn-solidoc ./ ./docs true
+solidoc2 ./ ./docs true
 ```
   
 **CLI Arguments**
 
-1. Path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
-2. Path to abi files relative to the root from p.1
-3. Path to generate documentation to.
-4. Do not recompile. Optional, default: false.
-5. Language. Optional, default: en.
+1. `pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle.
+2. `outputPath`: path to generate documentation to
+3. `buildFolder`: path to abi files relative to the root from `pathToRoot`
+4. `noCompilation`: do not recompile, optional, default: false
+5. `compiler`: path to run truffle compiler
+6. `language`: language, optional, default: en
+7. `ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc. 
+8. `readMe`: add contracts docs refs to this README.md file
   
 This will generate documentation to the `docs` directory.
 
@@ -68,7 +71,7 @@ This will generate documentation to the `docs` directory.
 
 ```json
   "scripts": {
-    "docgen": "solidoc ./ ./docs"
+    "docgen": "solidoc2 ./ ./docs"
   }
 ```
 
@@ -88,16 +91,18 @@ Alternatively, you can create `solidoc.json` configuration file in your project 
 
 ```json
 {
-  "pathToRoot": "./",
-  "outputPath": "./docs",
-  "buildFolder": "build",
+  "pathToRoot": "solidity",
+  "outputPath": "docs",
+  "buildFolder": "build/contracts",
   "noCompilation": true,
   "compiler": "truffle compile",
-  "language": "en"
+  "language": "en",
+  "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
+  "readMe": "README.md"
 }
 ```
 
-and then call `solidoc` instead of passing any command line argument.
+and then call `solidoc2` instead of passing any command line argument.
 
 
 ## Overrides
