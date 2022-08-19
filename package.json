@@ -39,8 +39,7 @@
     }
   ],
   "license": "Apache-2.0",
-  "homepage": "https://github.com/DistributedCollective/solidoc2"
-",
+  "homepage": "https://github.com/DistributedCollective/solidoc2",
   "repository": {
     "type": "git",
     "url": "https://github.com/DistributedCollective/solidoc2"
