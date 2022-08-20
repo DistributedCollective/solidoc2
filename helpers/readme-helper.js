@@ -32,11 +32,19 @@ const set = (replacable, config) => {
 
   replacable = fixLinks(config, replacable);
 
-  const contractsListBeginKeyword = config.contractsListBeginKeyword ? config.contractsListKeyword : "";
+  const contractsListBeginKeyword = config.contractsListBeginKeyword ? config.contractsListBeginKeyword : "";
+  const replaceContractsListBeginKeyword = config.replaceContractsListBeginKeyword ? config.replaceContractsListBeginKeyword : "";
   if (contractsListBeginKeyword !== "") {
-    ///^[\w\W]*(?=(## Contracts))/gmi
-    const regexp = new RegExp(`^[\\w\\W]*(?=\(${contractsListBeginKeyword}\)\)`, 'gmi');
-    replacable = replacable.replace(regexp, '');
+    let regexp;
+    if (replaceContractsListBeginKeyword == "") {
+      ///^[\w\W]*(?=(## Contracts))/gm
+      regexp = new RegExp(`^[\\w\\W]*(?=\(${contractsListBeginKeyword}\)\)`, 'gm');
+      replacable = replacable.replace(regexp, '');
+    } else {
+      ///^[\w\W]*## Contracts/gm
+      regexp = new RegExp(`^[\\w\\W]*${contractsListBeginKeyword}`, 'gm');
+      replacable = replaceContractsListBeginKeyword + replacable.replace(regexp, '');
+    }
   }
 
   let contents = fs.readFileSync(readMe).toString();

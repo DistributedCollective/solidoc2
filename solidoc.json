@@ -6,5 +6,6 @@
   "language": "en",
   "ignoreFiles": [],
   "contractsListBeginKeyword": "## Contracts",
+  "replaceContractsListBeginKeyword": "### Contracts",
   "readMe": "../protocol/readme.md"
 }
