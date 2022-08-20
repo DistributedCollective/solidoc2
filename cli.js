@@ -84,8 +84,6 @@ function begin() {
     return;
   }
 
-  console.log("config.outputPath", config.outputPath);
-
   if (!fs.existsSync(config.outputPath)) {
     logger.info('Create the directory for the output path: %s.');
     fs.mkdirSync(config.outputPath);
