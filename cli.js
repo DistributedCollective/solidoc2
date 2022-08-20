@@ -9,6 +9,7 @@ const pino = require('pino');
 const parser = require('./parser');
 const generator = require('./generator');
 const readMe = require('./helpers/readme-helper');
+const { exit } = require('process');
 
 const logger = pino({
   prettyPrint: true
@@ -83,9 +84,13 @@ function begin() {
     return;
   }
 
+  console.log("config.outputPath", config.outputPath);
+
   if (!fs.existsSync(config.outputPath)) {
     logger.info('Create the directory for the output path: %s.');
     fs.mkdirSync(config.outputPath);
+  } else if (config.freshOutput && config.freshOutput.toString().toLowerCase() === "true") {
+    fs.emptyDirSync(config.outputPath);
   }
 
   const contracts = parser.parse(buildDirectory, config.ignoreFiles ? config.ignoreFiles : []);

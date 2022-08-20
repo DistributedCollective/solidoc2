@@ -7,5 +7,6 @@
   "ignoreFiles": [],
   "contractsListBeginKeyword": "## Contracts",
   "replaceContractsListBeginKeyword": "### Contracts",
+  "freshOutput": true,
   "readMe": "../protocol/readme.md"
 }

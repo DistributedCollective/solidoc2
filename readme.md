@@ -44,6 +44,7 @@ Create solidoc.json in the root:
   "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
   "contractsListBeginKeyword": "## Contracts",
   "replaceContractsListBeginKeyword": "### Contracts",
+  "freahOutput": true,
   "readMe": "README.md"
 }
 ```  
@@ -57,6 +58,7 @@ Create solidoc.json in the root:
 `ignoreFiles`: exclude redundant for docs abi .json files by mask: tests, mocks etc.  
 `contractsListBeginKeyword`: text before the keyword will be removed from the contrtacts list for `readMe`
 `replaceContractsListBeginKeyword`: replacement of the `contractsListBeginKeyword` value, e.g. when need formatting or a different word/phrase
+`freshOutput`: empty the docs folder before generating docs
 `readMe`: add contracts docs refs to this README.md file  
   >  Contracts links will be inserted between these lines (put it in the readMe file)  
   >  [comment]: #solidoc (Start)  
