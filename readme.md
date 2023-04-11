@@ -44,12 +44,12 @@ Create solidoc.json in the root:
   "ignoreFiles": ["**/*[T|t]est*.json", "**/*[M|m]ock*.json"],
   "contractsListBeginKeyword": "## Contracts",
   "replaceContractsListBeginKeyword": "### Contracts",
-  "freahOutput": true,
+  "freshOutput": true,
   "readMe": "README.md"
 }
 ```  
 
-`pathToRoot`: path to truffle project (or similar) root. AST tree required for parsin - compiled with truffle  
+`pathToRoot`: path to truffle project (or similar) root. AST tree required for parsing - compiled with truffle  
 `outputPath`: path to generate documentation to  
 `buildFolder`: path to abi files relative to the root from `pathToRoot`  
 `noCompilation`: do not recompile, optional, default: false  
