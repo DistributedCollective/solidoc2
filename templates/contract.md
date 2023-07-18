@@ -7,7 +7,7 @@
 
 
 
-**{{ContractName}}**
+## **{{ContractName}}** contract
 
 
 {{ContractDescription}}
